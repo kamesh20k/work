@@ -1,4 +1,4 @@
-class FactorialExample{  
+class ThisFactorialExample{  
  public static void main(String args[]){  
   int i,fact=2;  
   int number=6;//It is the number to calculate factorial    

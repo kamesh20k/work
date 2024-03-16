@@ -22,7 +22,7 @@ pipeline {
         
         stage('Example Stage - Main Container Branch') {
             when {
-                expression { env.BRANCH_NAME ==~ /main.*/ }
+                expression { env.BRANCH_NAME  != main* }
             }
             steps {
                 echo 'This is an example echo statement in a main container branch'

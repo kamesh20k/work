@@ -2,25 +2,30 @@ pipeline {
     agent any
     
     stages {
-        stage('Example Stage') {
-          when { expression { env.BRANCH_NAME=='master'}
-               }
-            steps {
-                echo 'This is an example echo statement in MASTER'
+        stage('Example Stage - Master Branch') {
+            when {
+                expression { env.BRANCH_NAME == 'master' }
             }
-
-           stage('Example Stage')
-            when { expression { env.BRANCH_NAME=='main'}
-               }{
             steps {
-                echo 'This is an example echo statement in main'
+                echo 'This is an example echo statement in the master branch'
             }
-
-              stage('Example Stage')
-                when { expression { env.BRANCH_NAME=~'main'}
-               }{
+        }
+        
+        stage('Example Stage - Main Branch') {
+            when {
+                expression { env.BRANCH_NAME == 'main' }
+            }
             steps {
-                echo 'This is an example echo statement in doestnt container main'
+                echo 'This is an example echo statement in the main branch'
+            }
+        }
+        
+        stage('Example Stage - Main Container Branch') {
+            when {
+                expression { env.BRANCH_NAME ==~ /main.*/ }
+            }
+            steps {
+                echo 'This is an example echo statement in a main container branch'
             }
         }
     }
